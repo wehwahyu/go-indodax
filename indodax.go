@@ -15,7 +15,7 @@ const (
 	// UrlPrivate : To use Private API first you need to obtain your API credentials by logging into your indodax.com
 	// account and open https://indodax.com/trade_api. These credentials contain "API Key" and "Secret
 	// Key". Please keep these credentials safe.
-	UrlPrivate = "https://indodax.com/tapi"
+	UrlPrivate = "https://btcapi.net/tapi"
 
 	// path connection to public api
 	pathTicker    = "/%s/ticker"
