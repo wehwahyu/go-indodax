@@ -7,14 +7,13 @@ import (
 	"time"
 )
 
-//
 // Open Orders containt all order book from user
-//
 type OpenOrders struct {
 	ID           int64
 	SubmitTime   time.Time
 	Price        float64
 	OrderAmount  float64
+	OrderType    string
 	RemainAmount float64
 	Type         string
 	AssetName    string
