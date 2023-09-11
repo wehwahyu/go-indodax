@@ -10,13 +10,16 @@ import (
 // Open Orders containt all order book from user
 type OpenOrders struct {
 	ID           int64
+	OrderId      int64
 	SubmitTime   time.Time
 	Price        float64
 	OrderAmount  float64
-	OrderType    string
 	RemainAmount float64
 	Type         string
 	AssetName    string
+	OrderType    string
+	OrderIdr     float64
+	RemainIdr    float64
 }
 
 type responseAllOpenOrders struct {
@@ -53,7 +56,7 @@ func (openOrders *OpenOrders) UnmarshalJSON(b []byte) (err error) {
 		switch k {
 		case fieldNameOrderID:
 			openOrders.ID, err = strconv.ParseInt(v.(string), 10, 64)
-		case fieldNameType:
+		case fieldNameType, fieldOrderType:
 			openOrders.Type = v.(string)
 		case fieldNameSubmitTime:
 			ts, err := strconv.ParseInt(v.(string), 10, 64)
@@ -71,9 +74,9 @@ func (openOrders *OpenOrders) UnmarshalJSON(b []byte) (err error) {
 			}
 
 			switch keyName[0] {
-			case fieldNameRemain:
+			case fieldNameRemain, fieldRemainIdr:
 				openOrders.RemainAmount, err = strconv.ParseFloat(v.(string), 64)
-			case fieldNameOrder:
+			case fieldNameOrder, fieldOrderIdr:
 				openOrders.OrderAmount, err = strconv.ParseFloat(v.(string), 64)
 			}
 			openOrders.AssetName = keyName[1]

@@ -63,6 +63,10 @@ const (
 	fieldNameReceive        = "receive"
 	fieldNameSpend          = "spend"
 	fieldNameSold           = "sold"
+	fieldOrderId            = "order_id"
+	fieldOrderType          = "order_type"
+	fieldOrderIdr           = "order_idr"
+	fieldRemainIdr          = "remain_idr"
 )
 
 var (
@@ -141,16 +145,12 @@ func jsonToMapStringString(in map[string]interface{}) (
 	return out, nil
 }
 
-//
 // timestamp return current time in milliseconds as integer.
-//
 func makeTimestamp() int64 {
 	return time.Now().UnixNano() / int64(time.Millisecond)
 }
 
-//
 // timestampAsString return current time in milliseconds as string.
-//
 func timestampAsString() string {
 	return fmt.Sprintf("%d", makeTimestamp())
 }
