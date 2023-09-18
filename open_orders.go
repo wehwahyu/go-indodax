@@ -56,8 +56,10 @@ func (openOrders *OpenOrders) UnmarshalJSON(b []byte) (err error) {
 		switch k {
 		case fieldNameOrderID:
 			openOrders.ID, err = strconv.ParseInt(v.(string), 10, 64)
-		case fieldNameType, fieldOrderType:
+		case fieldNameType:
 			openOrders.Type = v.(string)
+		case fieldOrderType:
+			openOrders.OrderType = v.(string)
 		case fieldNameSubmitTime:
 			ts, err := strconv.ParseInt(v.(string), 10, 64)
 			if err != nil {
